@@ -1,5 +1,6 @@
 import logging
 from aiogram import Bot, types, Dispatcher, executor
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 
 logging.basicConfig(level=logging.INFO)
 
@@ -9,7 +10,19 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
-    await message.answer("Привет")
+    markup = ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
+    button1 = KeyboardButton(text='Заработать деньги')
+    button2 = KeyboardButton(text='Профиль')
+    markup.add(button1, button2)
+    await message.answer("Привет", reply_markup=markup)
+
+@dp.message_handler()
+async def classic(message: types.Message):
+    if message.text == "Заработать деньги":
+        await message.answer("+1 рубль")
+    elif message.text == "Профиль":
+        await message.answer("в разработке")
+    print('hello')
 
 if __name__ == "__main__":
     executor.start_polling(dp, skip_updates=True)
