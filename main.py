@@ -1,4 +1,5 @@
 import logging
+import mysql.connector
 from aiogram import Bot, types, Dispatcher, executor
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 
@@ -7,6 +8,15 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token="6047593260:AAE3JLiErNQ0FUrNhH4lPp_umrTITeQ6rH8", proxy='http://proxy.server:3128')
 dp = Dispatcher(bot)
 
+
+connect = mysql.connector.connect(
+    host='AlexMan04.mysql.pythonanywhere-services.com',
+    user='AlexMan04',
+    password='dRant1235',
+    database='tgbot',
+)
+
+cursor = connect.cursor()
 
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
@@ -21,7 +31,9 @@ async def classic(message: types.Message):
     if message.text == "Заработать деньги":
         await message.answer("+1 рубль")
     elif message.text == "Профиль":
-        await message.answer("в разработке")
+        cursor.execute("SELECT * FROM users")
+        print(cursor.fetchall())
+        await message.answer('hello')
 
 
 if __name__ == "__main__":
