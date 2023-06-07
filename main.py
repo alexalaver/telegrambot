@@ -22,6 +22,7 @@ async def classic(message: types.Message):
         await message.answer("+1 рубль")
     elif message.text == "Профиль":
         await message.answer("в разработке")
+        print('YOUYOUYOU')
 
 if __name__ == "__main__":
     executor.start_polling(dp, skip_updates=True)
