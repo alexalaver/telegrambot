@@ -23,5 +23,6 @@ async def classic(message: types.Message):
     elif message.text == "Профиль":
         await message.answer("в разработке")
 
+
 if __name__ == "__main__":
     executor.start_polling(dp, skip_updates=True)
