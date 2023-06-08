@@ -12,7 +12,7 @@ dp = Dispatcher(bot)
 connect = mysql.connector.connect(
     host='AlexMan04.mysql.pythonanywhere-services.com',
     user='AlexMan04',
-    password='dRant1235',
+    password='448282',
     database='tgbot',
 )
 
