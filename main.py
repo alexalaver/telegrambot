@@ -10,9 +10,9 @@ dp = Dispatcher(bot)
 
 
 connect = mysql.connector.connect(
-    host='AlexMan04.mysql.pythonanywhere-services.com',
     user='AlexMan04',
     password='qbc679898',
+    host='AlexMan04.mysql.pythonanywhere-services.com',
     database='tgbot',
 )
 
@@ -35,6 +35,8 @@ async def classic(message: types.Message):
         print(cursor.fetchall())
         await message.answer('hello')
 
+
+connect.close()
 
 if __name__ == "__main__":
     executor.start_polling(dp, skip_updates=True)
