@@ -1,7 +1,7 @@
 import logging
-import mysql.connector
+import MySQLdb
 from aiogram import Bot, types, Dispatcher, executor
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
 logging.basicConfig(level=logging.INFO)
 
@@ -9,7 +9,7 @@ bot = Bot(token="6047593260:AAE3JLiErNQ0FUrNhH4lPp_umrTITeQ6rH8", proxy='http://
 dp = Dispatcher(bot)
 
 
-connect = mysql.connector.connect(
+connect = MySQLdb.connect(
     user='AlexMan04',
     password='qbc679898',
     host='AlexMan04.mysql.pythonanywhere-services.com',
@@ -32,8 +32,8 @@ async def classic(message: types.Message):
         await message.answer("+1 рубль")
     elif message.text == "Профиль":
         cursor.execute("SELECT * FROM users")
-        print(cursor.fetchall())
-        await message.answer('hello')
+        result = cursor.fetchall()
+        await message.answer(result)
 
 
 connect.close()
