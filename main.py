@@ -13,7 +13,7 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start'])
 async def handle_start(message: types.Message):
-    markup = ReplyKeyboardMarkup()
+    markup = ReplyKeyboardMarkup(resize_keyboard=True)
     button1 = KeyboardButton("ՀԱՐՑԵՐ")
     markup.add(button1)
     await message.reply(f'Բարև {message.from_user.first_name}, սեղմեք «ՀԱՐՑԵՐ» կոճակը:', reply_markup=markup)
@@ -22,7 +22,7 @@ async def handle_start(message: types.Message):
 async def pusto(message: types.Message):
     if message.text == "ՀԱՐՑԵՐ":
         markup = InlineKeyboardMarkup()
-        button1 = InlineKeyboardButton("Մագնիսական փոխազդեցություն էրստեդի Ամպերի փորձերը։ Մագնիսական դաշտ Մագնիսական դաշտի ինդուկցիայի վեկտորը: Մագնիսական ինդուկցիայի գծեր, դրանց հատկությունները: Վերադրման սկզբունքը մագնիսական դաշտի համար", callback_data="harc1")
+        button1 = InlineKeyboardButton("Մագնիսական փոխազդեցություն էրստեդի \nԱմպերի փորձերը։ Մագնիսական դաշտ \nՄագնիսական դաշտի ինդուկցիայի \nվեկտորը: Մագնիսական \nինդուկցիայի գծեր, դրանց \nհատկությունները: Վերադրման \nսկզբունքը մագնիսական դաշտի համար", callback_data="harc1")
         markup.add(button1)
         await message.reply("Ահա բոլոր հարցերը:", reply_markup=markup)
 
@@ -30,7 +30,7 @@ async def pusto(message: types.Message):
 @dp.callback_query_handler()
 async def handle_callback_query(callback_query: types.CallbackQuery):
     if callback_query.data == 'harc1':
-        await bot.answer_callback_query(callback_query.id, text='Текст уведомления', show_alert=True)
+        await bot.answer_callback_query(callback_query.id, text='Մագնիսական փոխազդեցություն էրստեդի Ամպերի փորձերը։ Մագնիսական դաշտ Մագնիսական դաշտի ինդուկցիայի վեկտորը: Մագնիսական ինդուկցիայի գծեր, դրանց հատկությունները: Վերադրման սկզբունքը մագնիսական դաշտի համարՄագնիսական փոխազդեցություն էրստեդի Ամպերի փորձերը։ Մագնիսական դաշտ Մագնիսական դաշտի ինդուկցիայի վեկտորը: Մագնիսական ինդուկցիայի գծեր, դրանց հատկությունները: Վերադրման սկզբունքը մագնիսական դաշտի համարՄագնիսական փոխազդեցություն էրստեդի Ամպերի փորձերը։ Մագնիսական դաշտ Մագնիսական դաշտի ինդուկցիայի վեկտորը: Մագնիսական ինդուկցիայի գծեր, դրանց հատկությունները: Վերադրման սկզբունքը մագնիսական դաշտի համարՄագնիսական փոխազդեցություն էրստեդի Ամպերի փորձերը։ Մագնիսական դաշտ Մագնիսական դաշտի ինդուկցիայի վեկտորը: Մագնիսական ինդուկցիայի գծեր, դրանց հատկությունները: Վերադրման սկզբունքը մագնիսական դաշտի համարՄագնիսական փոխազդեցություն էրստեդի Ամպերի փորձերը։ Մագնիսական դաշտ Մագնիսական դաշտի ինդուկցիայի վեկտորը: Մագնիսական ինդուկցիայի գծեր, դրանց հատկությունները: Վերադրման սկզբունքը մագնիսական դաշտի համարՄագնիսական փոխազդեցություն էրստեդի Ամպերի փորձերը։ Մագնիսական դաշտ Մագնիսական դաշտի ինդուկցիայի վեկտորը: Մագնիսական ինդուկցիայի գծեր, դրանց հատկությունները: Վերադրման սկզբունքը մագնիսական դաշտի համար', show_alert=True)
 
 
 if __name__ == "__main__":
