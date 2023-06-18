@@ -7,7 +7,7 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeybo
 
 logging.basicConfig(level=logging.INFO)
 
-bot = Bot(token="6047593260:AAE3JLiErNQ0FUrNhH4lPp_umrTITeQ6rH8", proxy='http://proxy.server:3128')
+bot = Bot(token="6047593260:AAE3JLiErNQ0FUrNhH4lPp_umrTITeQ6rH8") #, proxy='http://proxy.server:3128'
 dp = Dispatcher(bot)
 
 
@@ -22,7 +22,7 @@ async def handle_start(message: types.Message):
 async def pusto(message: types.Message):
     if message.text == "ՀԱՐՑԵՐ":
         markup = InlineKeyboardMarkup()
-        button1 = InlineKeyboardButton("Մագնիսական փոխազդեցություն էրստեդի \nԱմպերի փորձերը։ Մագնիսական դաշտ \nՄագնիսական դաշտի ինդուկցիայի \nվեկտորը: Մագնիսական \nինդուկցիայի գծեր, դրանց \nհատկությունները: Վերադրման \nսկզբունքը մագնիսական դաշտի համար", callback_data="harc1")
+        button1 = InlineKeyboardButton("HARCY", callback_data="harc1")
         markup.add(button1)
         await message.reply("Ահա բոլոր հարցերը:", reply_markup=markup)
 
@@ -30,7 +30,7 @@ async def pusto(message: types.Message):
 @dp.callback_query_handler()
 async def handle_callback_query(callback_query: types.CallbackQuery):
     if callback_query.data == 'harc1':
-        await callback_query.answer("Մագնիսական փոխազդեցություն էրստեդի \nԱմպերի փորձերը։ Մագնիսական դաշտ \nՄագնիսական դաշտի ինդուկցիայի \nվեկտորը: Մագնիսական \nինդուկցիայի գծեր, դրանց \nհատկությունները: Վերադրման \nսկզբունքը մագնիսական դաշտի համար,Մագնիսական փոխազդեցություն էրստեդի \nԱմպերի փորձերը։ Մագնիսական դաշտ \nՄագնիսական դաշտի ինդուկցիայի \nվեկտորը: Մագնիսական \nինդուկցիայի գծեր, դրանց \nհատկությունները: Վերադրման \nսկզբունքը մագնիսական դաշտի համար")
+        await bot.send_message(callback_query.message.chat.id, "ՀԱՐՑ:\nTEXT\n\nՊԱՏԱՍԽԱՆ:\nTEXT")
 
 if __name__ == "__main__":
     executor.start_polling(dp, skip_updates=True)
