@@ -11,7 +11,7 @@ db = Data("datatext.db")
 
 logging.basicConfig(level=logging.INFO)
 
-bot = Bot(token="6047593260:AAE3JLiErNQ0FUrNhH4lPp_umrTITeQ6rH8") #, proxy='http://proxy.server:3128'
+bot = Bot(token="6047593260:AAE3JLiErNQ0FUrNhH4lPp_umrTITeQ6rH8", proxy='http://proxy.server:3128')
 dp = Dispatcher(bot)
 
 
